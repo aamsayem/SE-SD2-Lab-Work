@@ -44,6 +44,6 @@ The backend uses PostgreSQL through `pg` and Drizzle ORM; a Supabase project pro
    npm run dev
    ```
 
-   Open the local URL printed by Vite. The current frontend pages do not call this backend API yet.
+   Open the local URL printed by Vite. Use the navbar to switch between all React practice pages; the **Students API** page (`/students`) connects directly to the local backend (`http://localhost:3000/api/students`).
 
 `Backend/.env` is ignored by Git. Never commit or share the Supabase connection URI or JWT secret. Without a Supabase URI and database password in the local `.env`, the backend cannot connect or start.
