@@ -29,7 +29,7 @@ The backend uses PostgreSQL through `pg` and Drizzle ORM; a Supabase project pro
    npm run db:push
    ```
 
-   Review any proposed schema changes before confirming, especially if the database already contains data.
+   Review any proposed schema changes before confirming, especially if the database already contains data. If the backend connects but a student request fails with a database query error, check that `test_table` exists in the configured database and run `npm run db:push` to synchronize the schema.
 5. In that same terminal, start the backend:
 
    ```powershell

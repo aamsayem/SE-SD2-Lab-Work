@@ -19,7 +19,14 @@ export default function StudentsApi() {
       const res = await axios.get(API_URL);
       setStudents(res.data.data || []);
     } catch (err) {
-      setError("Could not connect to backend. Make sure Backend is running on port 3000.");
+      if (err.response) {
+        const message = err.response.data?.message;
+        setError(
+          `Backend request failed (${err.response.status})${message ? `: ${message}` : "."}`
+        );
+      } else {
+        setError("Could not connect to backend. Make sure Backend is running on port 3000.");
+      }
     } finally {
       setLoading(false);
     }
@@ -101,7 +108,7 @@ export default function StudentsApi() {
 
       {loading ? (
         <p className="text-gray-500">Loading students...</p>
-      ) : students.length === 0 ? (
+      ) : error ? null : students.length === 0 ? (
         <p className="text-gray-500">No students found in database.</p>
       ) : (
         <ul className="space-y-2">

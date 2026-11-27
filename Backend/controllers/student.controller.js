@@ -52,7 +52,7 @@ const getAllStudentsController = async (req, res) => {
       data: students,
     });
   } catch (err) {
-    console.error("GET all error:", err.message);
+    console.error("GET all error:", err);
     return res.status(500).json({ success: false, message: "Server error" });
   }
 };
